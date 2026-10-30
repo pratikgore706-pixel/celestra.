@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+.venv/
+backend/.wheels/
+
+# builds
+frontend/dist/
+__pycache__/
+*.pyc
+
+# runtime data
+backend/.cache/
+backend/.skyfield/
+backend/celestra.db
+backend/storage/
+backend/demo-cache/
+*.bsp
+
+# local files
+.env
+*.log
+*_log.txt
+setup.log
+*.tar
+.DS_Store
+Thumbs.db
+*.tsbuildinfo

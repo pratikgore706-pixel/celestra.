@@ -1,0 +1,15 @@
+**/node_modules
+**/.venv
+**/__pycache__
+**/.cache
+**/.skyfield
+**/.wheels
+**/dist
+backend/storage
+backend/demo-cache
+backend/celestra.db
+*.tar
+*.log
+*_log.txt
+setup.log
+.git

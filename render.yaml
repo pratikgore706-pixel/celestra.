@@ -1,0 +1,15 @@
+# Render Blueprint: the Celestra API as a free Python web service (no Docker).
+services:
+  - type: web
+    name: celestra-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt -r requirements-science.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips='*'
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: CELESTRA_CORS_ORIGINS
+        sync: false

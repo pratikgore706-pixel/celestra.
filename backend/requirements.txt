@@ -1,0 +1,11 @@
+# Core API. Minimum versions only, so Python 3.12-3.14 all get prebuilt wheels.
+fastapi>=0.115
+uvicorn[standard]>=0.32
+httpx>=0.28
+pydantic>=2.11
+sqlmodel>=0.0.24
+diskcache>=5.6
+python-multipart>=0.0.20
+astronomy-engine>=2.1.19
+skyfield>=1.49
+pytest>=8

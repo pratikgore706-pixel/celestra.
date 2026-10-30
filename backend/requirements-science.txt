@@ -1,0 +1,12 @@
+# Spirit Lens (image science). Install after requirements.txt.
+numpy>=2.0
+scipy>=1.14
+pillow>=11
+scikit-image>=0.25
+astropy>=7
+photutils>=2.0
+astroquery>=0.4.7
+# Optional, better denoising (DRUNet). ~1 GB download. The app falls back to
+# non-local means automatically if these are missing.
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+#   pip install deepinv

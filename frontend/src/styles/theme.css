@@ -1,0 +1,174 @@
+/* ============================================================
+   Celestra theme layer — Edo night: lacquer, ink, gold leaf.
+   Traditional textile patterns (shippō, seigaiha), hanko stamps,
+   ensō brush circles, brush-stroke navigation. Flat, no glass.
+   ============================================================ */
+
+/* page ground: ink with a faint shippō (seven treasures) lattice in gold */
+body {
+  background-color: var(--ink);
+  background-image: var(--pattern), var(--page-wash);
+  background-attachment: fixed;
+}
+:root {
+  --panel-top: #1a1622; --panel-bot: #131019; --panel-line: #2c2637; --panel-head-line: #2a2433;
+  --field-bg: rgba(28,24,38,.85); --field-line: #3a3346; --ghost-bg: rgba(28,24,38,.6);
+  --bar-bg: rgba(11,10,16,.97); --slot-bg: rgba(11,10,16,.35); --wave-line: #3a2238;
+  --page-wash: linear-gradient(180deg, #0b0a10 0%, #0e0c15 60%, #120e18 100%);
+  --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cg fill='none' stroke='%23e3b04b' stroke-opacity='0.045' stroke-width='1'%3E%3Ccircle cx='0' cy='0' r='24'/%3E%3Ccircle cx='48' cy='0' r='24'/%3E%3Ccircle cx='0' cy='48' r='24'/%3E%3Ccircle cx='48' cy='48' r='24'/%3E%3Ccircle cx='24' cy='24' r='24'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ---------- 暁 Akatsuki: the sky just before dawn (lighter, never white) ---------- */
+html[data-theme="akatsuki"] {
+  --ink: #1f2346; --night: #2a2f5a; --night-2: #343a6e; --rule: #424a85; --rule-strong: #565f9e;
+  --paper: #fbf3e6; --mist: #cfcbe6; --faint: #a4a3c9; --gold-dim: #c2964a;
+  --panel-top: #2d3364; --panel-bot: #262b56; --panel-line: #464e8c; --panel-head-line: #3d4580;
+  --field-bg: rgba(52,58,110,.92); --field-line: #5a63a3; --ghost-bg: rgba(52,58,110,.7);
+  --bar-bg: rgba(31,35,70,.97); --slot-bg: rgba(20,23,48,.35); --wave-line: #4a4f8e;
+  --page-wash: linear-gradient(180deg, #232850 0%, #2a2b5c 45%, #3a2c5e 80%, #4a2f5c 100%);
+  --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cg fill='none' stroke='%23f6d9a8' stroke-opacity='0.07' stroke-width='1'%3E%3Ccircle cx='0' cy='0' r='24'/%3E%3Ccircle cx='48' cy='0' r='24'/%3E%3Ccircle cx='0' cy='48' r='24'/%3E%3Ccircle cx='48' cy='48' r='24'/%3E%3Ccircle cx='24' cy='24' r='24'/%3E%3C/g%3E%3C/svg%3E");
+}
+html[data-theme="akatsuki"] .hourly td:first-child, html[data-theme="akatsuki"] .hourly th:first-child { background: var(--panel-bot); }
+html[data-theme="akatsuki"] .map-frame .leaflet-container { background: #1c2042; }
+
+/* ---------- top bar: lacquer strip + brush-stroke active tab ---------- */
+.topbar { border-top: 3px solid var(--crimson); border-bottom: 1px solid var(--panel-line); background: var(--bar-bg); }
+.brand-name { font-size: 24px; letter-spacing: .08em; }
+.nav a { border-bottom: 0; padding: 10px 14px 12px; position: relative; }
+.nav a.active { background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M2 7 C20 3 40 9 62 5 C82 2 100 8 118 4 L117 8 C98 11 80 6 60 9 C40 12 22 7 3 10 Z' fill='%23e2452f'/%3E%3C/svg%3E")
+  center bottom 4px / calc(100% - 16px) 8px no-repeat; }
+.nav a.active .kj { color: var(--gold); }
+
+/* ---------- buttons: notched like a tsuba (sword guard) ---------- */
+.btn { clip-path: polygon(9px 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%, 0 9px);
+  border-radius: 0; letter-spacing: .03em; padding: 10px 18px; }
+.btn.ghost { background: var(--ghost-bg); }
+.btn.sm { padding: 6px 12px; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); }
+.seg, .lang { border-radius: 0; }
+.field { border-radius: 0; background: var(--field-bg); border-color: var(--field-line); }
+.field:focus { border-color: var(--gold); outline: none; }
+
+/* ---------- scene header: bigger stage, page kanji, mist, seigaiha waves ---------- */
+.scene svg.art { height: 200px; }
+@media (max-width: 700px) { .scene svg.art { height: 160px; } }
+.scene-text { z-index: 3; padding-bottom: 40px; }
+.scene-kanji {
+  position: absolute; left: calc(var(--gutter) - 10px); bottom: 14px; z-index: -1;
+  font-family: var(--f-display); font-weight: 800; line-height: .9; letter-spacing: -.04em;
+  font-size: clamp(90px, 12vw, 170px); color: rgba(241, 220, 166, .08); pointer-events: none; white-space: nowrap;
+}
+.scene-text h1 { font-size: clamp(28px, 3.8vw, 46px); letter-spacing: .01em; }
+.scene-text .kanji { letter-spacing: .5em; font-size: 13px; }
+.scene-text p { font-size: 14.5px; color: #d6ccbd; margin-top: 2px; }
+.mist { position: absolute; left: -30%; width: 160%; height: 70px; z-index: 2; pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, rgba(239,230,212,.06) 20%, rgba(239,230,212,.1) 45%, rgba(239,230,212,.05) 70%, transparent 100%);
+  border-radius: 50%; animation: drift 46s ease-in-out infinite alternate; }
+.mist.m1 { top: 50%; }
+.mist.m2 { top: 66%; height: 40px; opacity: .7; animation-duration: 63s; animation-direction: alternate-reverse; }
+@keyframes drift { from { transform: translateX(-6%); } to { transform: translateX(6%); } }
+.seigaiha { position: absolute; left: 0; right: 0; bottom: 0; height: 26px; z-index: 2;
+  border-top: 1px solid rgba(227, 176, 75, .28);
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(circle at 100% 150%, var(--ink) 24%, var(--wave-line) 24%, var(--wave-line) 28%, var(--ink) 28%, var(--ink) 36%, var(--wave-line) 36%, var(--wave-line) 40%, transparent 40%, transparent),
+    radial-gradient(circle at 0 150%, var(--ink) 24%, var(--wave-line) 24%, var(--wave-line) 28%, var(--ink) 28%, var(--ink) 36%, var(--wave-line) 36%, var(--wave-line) 40%, transparent 40%, transparent),
+    radial-gradient(circle at 50% 100%, var(--wave-line) 10%, var(--ink) 10%, var(--ink) 23%, var(--wave-line) 23%, var(--wave-line) 30%, var(--ink) 30%, var(--ink) 43%, var(--wave-line) 43%, var(--wave-line) 50%, var(--ink) 50%, var(--ink) 63%, var(--wave-line) 63%, var(--wave-line) 71%, transparent 71%, transparent),
+    radial-gradient(circle at 100% 50%, var(--wave-line) 5%, var(--ink) 5%, var(--ink) 15%, var(--wave-line) 15%, var(--wave-line) 20%, var(--ink) 20%, var(--ink) 29%, var(--wave-line) 29%, var(--wave-line) 34%, var(--ink) 34%, var(--ink) 44%, var(--wave-line) 44%, var(--wave-line) 49%, transparent 49%, transparent),
+    radial-gradient(circle at 0 50%, var(--wave-line) 5%, var(--ink) 5%, var(--ink) 15%, var(--wave-line) 15%, var(--wave-line) 20%, var(--ink) 20%, var(--ink) 29%, var(--wave-line) 29%, var(--wave-line) 34%, var(--ink) 34%, var(--ink) 44%, var(--wave-line) 44%, var(--wave-line) 49%, transparent 49%, transparent);
+  background-size: 56px 28px; }
+
+/* ---------- panels: lacquer box, paper grain, hanko-stamped title ---------- */
+.panel { background: linear-gradient(180deg, var(--panel-top) 0%, var(--panel-bot) 100%); border: 1px solid var(--panel-line); border-radius: 0;
+  box-shadow: inset 0 1px 0 rgba(227, 176, 75, .10); overflow: hidden; }
+.panel::before { content: ""; position: absolute; inset: 0; pointer-events: none; border: 0; width: auto; height: auto;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .85 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.panel::after { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; width: auto; border: 0;
+  background: linear-gradient(90deg, var(--vermilion) 0 64px, transparent 64px); }
+.panel > * { position: relative; }
+.panel-h { padding-bottom: 12px; margin-bottom: 14px; border-bottom: 1px solid var(--panel-head-line); }
+.panel-h h2 { display: flex; align-items: center; gap: 12px; font-size: 19px; }
+.hanko-kj { display: inline-grid; place-items: center; min-width: 34px; height: 34px; padding: 0 6px;
+  background: var(--vermilion); color: #fbeedb; font-family: var(--f-display); font-size: 15px; font-weight: 800;
+  transform: rotate(-4deg); box-shadow: inset 0 0 0 2px rgba(255, 240, 220, .18), 2px 2px 0 rgba(0,0,0,.45);
+  letter-spacing: 0; line-height: 1; }
+.panel-title { font-family: var(--f-display); font-weight: 800; }
+
+/* placeholder blocks: calm, no dashed outlines */
+.slot { border: 1px solid var(--panel-line); background: var(--slot-bg); color: var(--faint); }
+
+/* ---------- ensō around key numbers ---------- */
+.enso { position: relative; display: grid; place-items: center; flex: 0 0 auto; }
+.enso svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-12deg); }
+.enso-in { position: relative; text-align: center; line-height: 1; }
+.enso .stat { font-size: 46px; }
+
+/* ---------- small touches ---------- */
+.eyebrow { color: var(--gold); letter-spacing: .2em; }
+.chip { border-radius: 0; }
+.rank button[aria-pressed="true"] { background: linear-gradient(90deg, rgba(226,69,47,.12), transparent 70%); box-shadow: inset 3px 0 0 var(--vermilion); }
+.rank-score { font-size: 26px; }
+.omamori { background: linear-gradient(90deg, rgba(165,29,45,.25), transparent 60%), var(--night); border-bottom: 1px solid var(--panel-line); }
+.omamori-mark { border-radius: 0; background: var(--vermilion); color: #fbeedb; }
+footer.foot { border-top: 1px solid rgba(227,176,75,.2); background: linear-gradient(0deg, rgba(165,29,45,.08), transparent); }
+.virtue { border-radius: 0; }
+.virtue.earned { background: linear-gradient(180deg, rgba(226,69,47,.14), rgba(28,24,38,.6)); }
+.cal-d { border-radius: 0; }
+.cal-d.today { background: linear-gradient(180deg, rgba(226,69,47,.12), var(--night-2)); }
+.top-spot, .src-card, .ev, .drop { border-radius: 0; }
+.hanko { border-radius: 2px; }
+.map-frame { outline-color: var(--panel-bot); }
+
+@media (prefers-reduced-motion: reduce) { .mist { animation: none; } }
+
+/* outline buttons: square corners keep the border whole; vermilion edge marks them */
+.btn.ghost, .btn.ghost.sm { clip-path: none; border-color: var(--field-line); box-shadow: inset 2px 0 0 var(--vermilion); }
+.btn.ghost:hover { box-shadow: inset 2px 0 0 var(--gold); }
+.btn:disabled { filter: saturate(.4); }
+.slot-in { display: grid; justify-items: center; gap: 12px; max-width: 46ch; }
+.slot .enso svg { transform: rotate(18deg); }
+
+
+/* ---------- tighter content heights ---------- */
+.map-frame .leaflet-container { height: 380px !important; }
+.rank { max-height: 384px; }
+.cal-d { min-height: 74px; padding-top: 6px; gap: 2px; }
+.cal-d svg { width: 24px; height: 24px; }
+.grid { margin-top: 20px; }
+
+/* ---------- moonrise: one orchestrated moment on page load ---------- */
+.scene .moon-rise { animation: moonrise 1.6s cubic-bezier(.2,.7,.2,1) both; transform-box: fill-box; }
+.scene .stars circle { animation: twinkle 1.8s ease-out both; }
+.scene .stars circle:nth-child(3n) { animation-delay: .35s; }
+.scene .stars circle:nth-child(3n+1) { animation-delay: .7s; }
+.scene-text h1, .scene-text p { animation: settle 1s .35s ease-out both; }
+.scene-kanji { animation: inkin 1.6s .1s ease-out both; }
+@keyframes moonrise { from { transform: translateY(70px); opacity: .2; } to { transform: none; opacity: 1; } }
+@keyframes twinkle { from { opacity: 0; } to { opacity: .75; } }
+@keyframes settle { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes inkin { from { opacity: 0; letter-spacing: .06em; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .scene .moon-rise, .scene .stars circle, .scene-text h1, .scene-text p, .scene-kanji { animation: none; }
+}
+
+/* ---------- ink-wash depth behind the content (sumi-e mountains, very faint) ---------- */
+main { position: relative; isolation: isolate; }
+main::after { content: ""; position: fixed; left: 0; right: 0; bottom: 0; height: 46vh; z-index: -1; pointer-events: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 400' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23e3b04b' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23e3b04b' stop-opacity='.05'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23a51d2d' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23a51d2d' stop-opacity='.09'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 250 C120 180 220 210 320 160 C420 110 520 190 640 150 C760 110 860 60 980 130 C1100 200 1200 120 1320 150 C1380 165 1420 170 1440 160 L1440 400 L0 400Z' fill='url(%23a)'/%3E%3Cpath d='M0 320 C160 270 260 300 380 260 C520 215 640 290 780 250 C900 215 1010 270 1150 240 C1260 215 1360 260 1440 245 L1440 400 L0 400Z' fill='url(%23b)'/%3E%3C/svg%3E")
+    bottom / 100% 100% no-repeat; }
+
+/* sky switch (夜 / 暁) */
+.sky-switch { display: flex; border: 1px solid var(--rule-strong); }
+.sky-switch button { background: none; border: 0; width: 34px; height: 30px; cursor: pointer; color: var(--mist); display: grid; place-items: center; }
+.sky-switch button + button { border-left: 1px solid var(--rule-strong); }
+.sky-switch .kjs { font-family: var(--f-display); font-size: 15px; font-weight: 800; }
+.sky-switch button[aria-pressed="true"] { background: var(--vermilion); color: #fbeedb; }
+.lang { border-color: var(--rule-strong); }
+
+/* localized lunar names (non-Japanese) */
+.moon-kanji.loc { font-family: var(--f-display); font-size: 22px; line-height: 1.2; letter-spacing: 0; }
+.cal-kj.loc { font-family: var(--f-body); font-size: 10px; line-height: 1.25; letter-spacing: 0; text-align: center; white-space: normal; }
+.sky-switch button { width: auto; min-width: 44px; padding: 0 9px; }
+.sky-switch .kjs { font-family: var(--f-body); font-size: 12px; font-weight: 700; }
+html[lang="ja"] .sky-switch .kjs { font-family: var(--f-display); font-size: 15px; }

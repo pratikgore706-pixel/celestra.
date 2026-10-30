@@ -1,0 +1,48 @@
+/* Celestra design tokens: ink silhouettes on a stepped night sky. */
+:root {
+  /* ground */
+  --ink: #0b0a10;          /* page */
+  --night: #14121c;        /* panels */
+  --night-2: #1c1926;      /* raised rows, inputs */
+  --rule: #2e2a3a;         /* hairlines */
+  --rule-strong: #4a4358;
+
+  /* text */
+  --paper: #efe6d4;
+  --mist: #a59cae;
+  --faint: #6e6679;
+
+  /* accents */
+  --gold: #e3b04b;         /* scores, key numbers, selection */
+  --gold-dim: #8a6a2c;
+  --vermilion: #e2452f;    /* actions, alerts, seal stamp */
+  --crimson: #a51d2d;
+  --sakura: #e9a3b6;
+  --indigo: #283066;
+
+  /* sky bands for scenes (top to horizon) */
+  --sky-1: #191634;
+  --sky-2: #34183a;
+  --sky-3: #5e1a34;
+  --sky-4: #9a2a2c;
+  --sky-5: #d4552f;
+  --moon: #f1dca6;
+  --hill-1: #3a1730;
+  --hill-2: #241227;
+  --hill-3: #150c18;
+
+  /* status */
+  --good: #7fbf8e;
+  --warn: #e3b04b;
+  --warn-2: #c9874a;
+  --bad: #e2452f;
+
+  /* type */
+  --f-display: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  --f-body: "Zen Kaku Gothic New", "Noto Sans Devanagari", "Hiragino Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+
+  --r: 2px;
+  --gutter: max(16px, 3vw);
+  color-scheme: dark;
+}
